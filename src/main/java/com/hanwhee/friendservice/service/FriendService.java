@@ -36,12 +36,12 @@ public class FriendService {
             ));
         }
         return viewAllFriendLists;
-
-    public  String deleteFriend(FriendDTO dto) {
-        Friend friend = new Friend(dto);
-        Optional<Friend> findFriend = friendRepository.findByMyIdAndFriendId(dto.getMyId(), dto.getFriendId());
-        friendRepository.deleteById(findFriend.get().getId());
-        return "친구삭제완료";
-
     }
-}
+        public  String deleteFriend(FriendDTO dto) {
+            Friend friend = new Friend(dto);
+            Optional<Friend> findFriend = friendRepository.findByMyIdAndFriendId(dto.getMyId(), dto.getFriendId());
+            friendRepository.deleteById(findFriend.get().getId());
+            return "친구삭제완료";
+
+        }
+    }
