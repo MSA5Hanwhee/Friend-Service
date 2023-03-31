@@ -1,9 +1,7 @@
 package com.hanwhee.friendservice.domain.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.hanwhee.friendservice.domain.dto.EFriendStatus;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,9 +12,8 @@ import lombok.NoArgsConstructor;
 public class Friend {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Long myId;
     private Long friendId;
-    private boolean isFriend;
-
+    @Enumerated(EnumType.STRING)
+    private EFriendStatus friendStatus = EFriendStatus.STRANGER;
 }
