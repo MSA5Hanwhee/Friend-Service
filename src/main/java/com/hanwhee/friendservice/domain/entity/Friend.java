@@ -1,5 +1,6 @@
 package com.hanwhee.friendservice.domain.entity;
 
+import com.hanwhee.friendservice.domain.dto.FriendDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,4 +20,8 @@ public class Friend {
     private Long friendId;
     private boolean isFriend;
 
+    public Friend(FriendDTO dto) {
+        this.myId = dto.getMyId();
+        this.friendId = dto.getFriendId();
+    }
 }
