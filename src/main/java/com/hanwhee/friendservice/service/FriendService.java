@@ -9,6 +9,8 @@ import com.hanwhee.friendservice.security.TokenInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class FriendService {
@@ -19,5 +21,12 @@ public class FriendService {
         Friend friend = new Friend(dto);
         friendRepository.save(friend);
         return "친구추가완료";
+    }
+
+    public  String deleteFriend(FriendDTO dto) {
+        Friend friend = new Friend(dto);
+        Optional<Friend> findFriend = friendRepository.findByMyIdAndFriendId(dto.getMyId(), dto.getFriendId());
+        friendRepository.deleteById(findFriend.get().getId());
+        return "친구삭제완료";
     }
 }
