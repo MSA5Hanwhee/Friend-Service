@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      uri: http://192.168.80.15:8888
+      name: ecommerce
+      enabled: true
