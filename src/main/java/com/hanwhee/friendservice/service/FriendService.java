@@ -9,7 +9,6 @@ import com.hanwhee.friendservice.security.SecurityService;
 import com.hanwhee.friendservice.security.TokenInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +25,7 @@ public class FriendService {
         return "친구추가완료";
     }
 
+
     public List<ViewAllFriendList> findMyAllFriend(Long myId) {
         List<ViewAllFriendList> viewAllFriendLists = new ArrayList<>();
         List<Friend> all = friendRepository.findAllByMyId(myId);
@@ -36,5 +36,12 @@ public class FriendService {
             ));
         }
         return viewAllFriendLists;
+
+    public  String deleteFriend(FriendDTO dto) {
+        Friend friend = new Friend(dto);
+        Optional<Friend> findFriend = friendRepository.findByMyIdAndFriendId(dto.getMyId(), dto.getFriendId());
+        friendRepository.deleteById(findFriend.get().getId());
+        return "친구삭제완료";
+
     }
 }
