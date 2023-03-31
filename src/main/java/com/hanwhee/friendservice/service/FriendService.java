@@ -36,7 +36,7 @@ public class FriendService {
             ));
         }
         return viewAllFriendLists;
-
+    }
     public  String deleteFriend(FriendDTO dto) {
         Friend friend = new Friend(dto);
         Optional<Friend> findFriend = friendRepository.findByMyIdAndFriendId(dto.getMyId(), dto.getFriendId());
